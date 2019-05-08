@@ -1,0 +1,11 @@
+{
+  "name": "api-wrapper",
+  "version": "1.0.0",
+  "description": "A simple API wrapper written in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
+  "license": "ISC"
+}
