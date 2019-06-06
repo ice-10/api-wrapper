@@ -9,7 +9,6 @@
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "centra": "^2.2.2",
     "request": "^2.88.0"
   }
 }
