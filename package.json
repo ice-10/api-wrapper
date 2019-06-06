@@ -1,6 +1,6 @@
 {
   "name": "@groovy/api-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simple API wrapper written in Node.js",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "centra": "^2.2.2"
+    "centra": "^2.2.2",
+    "request": "^2.88.0"
   }
 }
