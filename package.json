@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js",
-    "lint": "eslint --fix --ext .js --ignore-path .gitignore ."
+    "lint": "eslint --fix --ignore-path .gitignore ."
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "got": "^9.6.0"
+    "centra": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0"

@@ -9,11 +9,7 @@ class Client {
   }
 
   async authorize(code) {
-    const response = await this.http.request('POST', '/token', {}, {
-      code: code
-    });
-
-    return response.body;
+    return await this.http.request('POST', '/token', { body: { code: code }});
   }
 }
 
