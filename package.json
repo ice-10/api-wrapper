@@ -9,7 +9,7 @@
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "centra": "^2.3.0"
+    "centra": "github:groovy-bot/centra"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
