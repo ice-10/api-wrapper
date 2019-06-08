@@ -1,4 +1,4 @@
-const request = require('request');
+const got = require('got');
 
 class Http {
 
@@ -6,17 +6,18 @@ class Http {
     this.client = client;
   }
 
-  req(uri, headers, body) {
-    request({
-      method: 'GET',
-      uri: uri,
-      headers: headers,
-      body: body
-    }, (error, response, body) => {
-      console.log('e: ' + error); /* eslint-disable-line */
-      console.log('r: ' + response); /* eslint-disable-line */
-      console.log('b: ' + body); /* eslint-disable-line */
-    });
+  async request(method, url, headers, body) {
+    try {
+      return await got(url, {
+        method: method,
+        baseUrl: this.client.baseURL,
+        headers: headers,
+        body: body,
+        json: true
+      });      
+    } catch(err) {
+      return err;
+    }
   }
 }
 

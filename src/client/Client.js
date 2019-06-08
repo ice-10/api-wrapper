@@ -8,12 +8,12 @@ class Client {
     this.http = new Http(this);
   }
 
-  authorize(code) {
-    this.http.req(this.baseURL + '/token', {
-      'Content-Type': 'application/json'
-    }, {
-      'code': code
+  async authorize(code) {
+    const response = await this.http.request('POST', '/token', {}, {
+      code: code
     });
+
+    return response.body;
   }
 }
 

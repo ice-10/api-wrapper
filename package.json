@@ -9,6 +9,9 @@
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "request": "^2.88.0"
+    "got": "^9.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
   }
 }
