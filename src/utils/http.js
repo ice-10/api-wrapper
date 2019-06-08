@@ -1,47 +1,19 @@
-const request = require('centra');
+const centra = require('centra');
+const RestResponse = require('../rest/RestResponse');
 
-module.exports = {
-  async get(path, api) {
-    const response = await request(api.baseURL, 'GET')
-      .path(path)
-      .header({
-        'Content-Type': 'application/json'
-      })
-      .send();
-    return await response.json();
-  },
+class Http {
 
-  post(path, api) {
-    request(api.baseURL, 'POST')
-      .path(path)
-      .header({
-        'Content-Type': 'application/json'
-      })
-      .body({
-
-      })
-      .send()
-      .then(res => {
-        return res;
-      }).catch(err => {
-        return err;
-      });
-  },
-
-  patch(path, api) {
-    request(api.baseURL, 'PATCH')
-      .path(path)
-      .header({
-        'Content-Type': 'application/json'
-      })
-      .body({
-        
-      })
-      .send()
-      .then(res => {
-        return res;
-      }).catch(err => {
-        return err;
-      });
+  constructor(client) {
+    this.client = client;
   }
-};
+
+  async request(method, url, { headers = {}, body = {} }) {
+    return await centra(this.client.baseURL + url, method).body(body, 'json').header(headers).send().then(response => {
+      return new RestResponse(response);
+    }).catch(error => {
+      return new RestResponse(error);
+    });
+  }
+}
+
+module.exports = Http;

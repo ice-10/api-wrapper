@@ -1,14 +1,17 @@
 {
   "name": "@groovy/api-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simple API wrapper written in Node.js",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js",
-    "lint": "eslint --fix --ext .js --ignore-path .gitignore ."
+    "lint": "eslint --fix --ignore-path .gitignore ."
   },
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "dependencies": {
-    "centra": "^2.2.2"
+    "centra": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
   }
 }
