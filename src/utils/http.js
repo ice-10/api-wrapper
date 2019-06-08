@@ -9,8 +9,10 @@ class Http {
 
   async request(method, url, { headers = {}, body = {} }) {
     return await centra(this.client.baseURL + url, method).body(body, 'json').header(headers).send().then(response => {
+      console.log(response); /* eslint-disable-line */
       return new RestResponse(response);
     }).catch(error => {
+      console.log(error); /* eslint-disable-line */
       return new RestResponse(error);
     });
   }
