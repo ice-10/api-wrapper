@@ -1,4 +1,4 @@
-const centra = require('centra');
+const axios = require('axios');
 const RestResponse = require('../rest/RestResponse');
 
 class Http {
@@ -7,12 +7,16 @@ class Http {
     this.client = client;
   }
 
-  async request(method, url, { headers = {}, body = {} }) {
-    return await centra(this.client.baseURL + url, method).body(body, 'json').header(headers).send().then(response => {
-      console.log(response); /* eslint-disable-line */
+  request(method, url, { headers = {}, body = {} }) {
+    return axios.request({
+      method: method,
+      baseURL: this.client.baseURL,
+      url: url,
+      headers: headers,
+      data: body
+    }).then(response => {
       return new RestResponse(response);
     }).catch(error => {
-      console.log(error); /* eslint-disable-line */
       return new RestResponse(error);
     });
   }
