@@ -8,8 +8,8 @@ class Client {
     this.http = new Http(this);
   }
 
-  async authorize(code) {
-    return await this.http.request('POST', '/token', { body: { code: code }});
+  authorize(code) {
+    return this.http.request('post', '/token', { headers: { 'content-type': 'application/json' }, body: { code: code }});
   }
 }
 

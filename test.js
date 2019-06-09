@@ -2,7 +2,7 @@ const { Client } = require('./index');
 const client = new Client({ baseURL: 'http://api.staging.groovy.bot'});
 
 async function tester() {
-  console.log(await client.authorize('zsM512FqKUJb9HmpR7HZTGouMhm0kO')); /* eslint-disable-line */
+  console.log(await client.authorize('pDlLwrzJkCM3J9kVZ8rmYzN0uEjQPW')); /* eslint-disable-line */
 }
 
 tester();
