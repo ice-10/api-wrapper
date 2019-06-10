@@ -9,11 +9,19 @@ class Client {
   }
 
   authorize(code) {
-    return this.http.request('post', '/token', { headers: { 'content-type': 'application/json' }, body: { code: code }});
+    return this.http.request('post', '/token', { body: { code: code }});
   }
 
   refresh(token) {
-    return this.http.request('post', '/token', { headers: { 'content-type': 'application/json' }, body: { refreshToken: token }});
+    return this.http.request('post', '/token', { body: { refreshToken: token }});
+  }
+
+  getSelfUser(token) {
+    return this.http.request('get', '/users/@me', { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  getSelfGuilds(token) {
+    return this.http.request('get', '/users/@me/guilds', { headers: { 'authorization': `Bearer ${token}` } });
   }
 }
 

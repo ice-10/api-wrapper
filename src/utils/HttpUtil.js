@@ -5,12 +5,13 @@ class Http {
 
   constructor(client) {
     this.client = client;
+
+    axios.defaults.baseURL = this.client.baseURL;
   }
 
   request(method, url, { headers = {}, body = {} }) {
     return axios.request({
       method: method,
-      baseURL: this.client.baseURL,
       url: url,
       headers: headers,
       data: body
