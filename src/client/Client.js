@@ -1,15 +1,19 @@
-const Http = require('../utils/Http');
+const HttpUtil = require('../utils/HttpUtil');
 
 class Client {
 
   constructor(options) {
     this.baseURL = options.baseURL;
 
-    this.http = new Http(this);
+    this.http = new HttpUtil(this);
   }
 
   authorize(code) {
     return this.http.request('post', '/token', { headers: { 'content-type': 'application/json' }, body: { code: code }});
+  }
+
+  refresh(token) {
+    return this.http.request('post', '/token', { headers: { 'content-type': 'application/json' }, body: { refreshToken: token }});
   }
 }
 
