@@ -9,11 +9,11 @@ class Client {
   }
 
   authorize(code) {
-    return this.http.request('post', '/token', { body: { code: code }});
+    return this.http.request('post', '/tokens', { body: { code: code }});
   }
 
   refresh(token) {
-    return this.http.request('post', '/token', { body: { refreshToken: token }});
+    return this.http.request('post', '/tokens', { body: { refreshToken: token }});
   }
 
   getSelfUser(token) {
