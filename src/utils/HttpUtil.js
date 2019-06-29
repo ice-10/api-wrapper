@@ -5,7 +5,6 @@ class Http {
 
   constructor(client) {
     this.client = client;
-
     axios.defaults.baseURL = this.client.baseURL;
   }
 
