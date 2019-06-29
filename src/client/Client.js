@@ -4,7 +4,6 @@ class Client {
 
   constructor(options) {
     this.baseURL = options.baseURL;
-
     this.http = new HttpUtil(this);
   }
 
