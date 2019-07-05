@@ -1,6 +1,6 @@
 {
   "name": "@groovy/api-wrapper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple API wrapper written in Node.js",
   "author": "Rxsto <oz@farfrom.social> (https://rxsto.me)",
   "scripts": {
