@@ -68,13 +68,24 @@ class Client {
   }
 
   /**
-   * 
+   * Removes Premium from the specified guild
    * 
    * @param {string} token The access token our API returned
    * @param {string} id The Discord guild id
    */
   removePremium(token, id) {
     return this.http.request('delete', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
+   * Creates a hostedPage related to the provided planId
+   * 
+   * @param {string} token The access token our API returned 
+   * @param {string} planId The planId of our chargebee plans
+   * @param {string} type The type of the requested hostedPage
+   */
+  createHostedPage(token, planId, type) {
+    return this.http.request('post', '/users/@me/subscription/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: planId, type: type } });
   }
 }
 
