@@ -18,14 +18,15 @@ class Http {
    * 
    * @param {string} method The method to use for the request
    * @param {string} url The URL to send the request to
-   * @param {object} param2 Optional headers and body
+   * @param {object} param2 Optional headers, body and params
    */
-  request(method, url, { headers = {}, body = {} }) {
+  request(method, url, { headers = {}, body = {}, params = {} }) {
     return axios.request({
       method: method,
       url: url,
       headers: headers,
-      data: body
+      data: body,
+      params: params
     }).then(response => {
       return new RestResponse(response);
     }).catch(error => {
