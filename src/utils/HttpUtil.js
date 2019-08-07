@@ -30,7 +30,29 @@ class Http {
     }).then(response => {
       return new RestResponse(response);
     }).catch(error => {
-      return new RestResponse(error);
+      if (error.response) {
+        return new RestResponse(error.response);
+      } else if(error.request) {
+        return new RestResponse({
+          status: 500,
+          data: {
+            status: 500,
+            error: 'No response!',
+            message: 'The server didn\'t respond!'
+          },
+          headers: error.request.headers
+        });
+      } else {
+        return new RestResponse({
+          status: 500,
+          data: {
+            status: 500,
+            error: 'Request failed!',
+            message: 'The request could not be fulfilled!'
+          },
+          headers: {}
+        });
+      }
     });
   }
 }
