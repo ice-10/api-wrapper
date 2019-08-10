@@ -1,4 +1,5 @@
 const axios = require('axios');
+const consola = require('consola');
 const RestResponse = require('../rest/RestResponse');
 
 class Http {
@@ -31,10 +32,10 @@ class Http {
       return new RestResponse(response);
     }).catch(error => {
       if (error.response) {
+        consola.error(error);
         return new RestResponse(error.response);
       } else if(error.request) {
-        console.log('no response in object'); /* eslint-disable-line */
-        console.log(error); /* eslint-disable-line */
+        consola.error(error);
         return new RestResponse({
           status: 500,
           data: {
@@ -42,11 +43,10 @@ class Http {
             error: 'No response!',
             message: 'The server didn\'t respond!'
           },
-          headers: error.request.headers
+          headers: {}
         });
       } else {
-        console.log('no response or request in object'); /* eslint-disable-line */
-        console.log(error); /* eslint-disable-line */
+        consola.error(error);
         return new RestResponse({
           status: 500,
           data: {
