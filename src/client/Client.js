@@ -53,8 +53,8 @@ class Client {
    * 
    * @param {string} token The access token our API returned
    */
-  getSelfSubscription(token) {
-    return this.http.request('get', '/users/@me/subscription', { headers: { 'authorization': `Bearer ${token}` } });
+  getSelfSubscription(token, useCache = true) {
+    return this.http.request('get', '/users/@me/subscription', { headers: { 'authorization': `Bearer ${token}` }, params: { useCache: useCache } });
   }
 
   /**
@@ -89,6 +89,7 @@ class Client {
   }
 
   /**
+   * Creates a portalSession related to the selfUser
    * 
    * @param {string} token The access token our API returned
    */
