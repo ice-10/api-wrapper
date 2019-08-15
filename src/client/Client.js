@@ -96,6 +96,16 @@ class Client {
   createPortalSession(token) {
     return this.http.request('post', '/chargebee/portalSessions', { headers: { 'authorization': `Bearer ${token}` } });
   }
+
+  /**
+   * Requests the plan object related to the planId
+   * 
+   * @param {string} token The access token our API returned
+   * @param {string} planId The planId for the requested plan
+   */
+  getPlan(token, planId) {
+    return this.http.request('get', `/chargebee/plans/${planId}`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
 }
 
 module.exports = Client;
