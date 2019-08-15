@@ -106,6 +106,15 @@ class Client {
   getPlan(token, planId) {
     return this.http.request('get', `/chargebee/plans/${planId}`, { headers: { 'authorization': `Bearer ${token}` } });
   }
+
+  /**
+   * Requests all available plans
+   * 
+   * @param {string} token The access token our API returned
+   */
+  getPlans(token) {
+    return this.http.request('get', '/chargebee/plans', { headers: { 'authorization': `Bearer ${token}` } });
+  }
 }
 
 module.exports = Client;
