@@ -32,7 +32,6 @@ class Http {
       return new RestResponse(response);
     }).catch(error => {
       if (error.response) {
-        consola.error(error);
         return new RestResponse(error.response);
       } else if(error.request) {
         consola.error(error);

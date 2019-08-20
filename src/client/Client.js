@@ -58,6 +58,16 @@ class Client {
   }
 
   /**
+   * Gets premium-related data from the specified guild
+   * 
+   * @param {string} token The access token our API returned
+   * @param {string} id The Discord guild id
+   */
+  getPremium(token, id) {
+    return this.http.request('get', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
    * Applies Premium to the specified guild
    * 
    * @param {string} token The access token our API returned
@@ -103,17 +113,15 @@ class Client {
    * @param {string} token The access token our API returned
    * @param {string} planId The planId for the requested plan
    */
-  getPlan(token, planId) {
-    return this.http.request('get', `/chargebee/plans/${planId}`, { headers: { 'authorization': `Bearer ${token}` } });
+  getPlan(planId) {
+    return this.http.request('get', `/chargebee/plans/${planId}`, {});
   }
 
   /**
    * Requests all available plans
-   * 
-   * @param {string} token The access token our API returned
    */
-  getPlans(token) {
-    return this.http.request('get', '/chargebee/plans', { headers: { 'authorization': `Bearer ${token}` } });
+  getPlans() {
+    return this.http.request('get', '/chargebee/plans', {});
   }
 }
 
