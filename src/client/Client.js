@@ -58,6 +58,16 @@ class Client {
   }
 
   /**
+   * Gets premium-related data from the specified guild
+   * 
+   * @param {string} token The access token our API returned
+   * @param {string} id The Discord guild id
+   */
+  getPremium(token, id) {
+    return this.http.request('get', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
    * Applies Premium to the specified guild
    * 
    * @param {string} token The access token our API returned
