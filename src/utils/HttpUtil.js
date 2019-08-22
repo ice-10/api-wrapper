@@ -27,7 +27,10 @@ class Http {
       url: url,
       headers: headers,
       data: body,
-      params: params
+      params: params,
+      validateStatus: status => {
+        return status < 500;
+      }
     }).then(response => {
       return new RestResponse(response);
     }).catch(error => {
