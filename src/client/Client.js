@@ -58,13 +58,42 @@ class Client {
   }
 
   /**
+   * Gets all selfuser-related upgrades
+   * 
+   * @param {string} token The access token our API returned
+   */
+  getSelfUpgrades(token) {
+    return this.http.request('get', '/users/@me/upgrades', { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
+   * Gets a Discord user
+   * 
+   * @param {string} token The access token our API returned
+   * @param {string} id The Discord user id
+   */
+  getUser(token, id) {
+    return this.http.request('get', `/users/${id}`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
    * Gets premium-related data from the specified guild
    * 
    * @param {string} token The access token our API returned
    * @param {string} id The Discord guild id
    */
-  getPremium(token, id) {
-    return this.http.request('get', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  getGuildUpgrade(token, id) {
+    return this.http.request('get', `/guilds/${id}/upgrade`, { headers: { 'authorization': `Bearer ${token}` } });
+  }
+
+  /**
+   * Checks if the bot is present in a specific guild
+   * 
+   * @param {string} token The access token our API returned
+   * @param {string} id The Discord guild id
+   */
+  existsGuild(token, id) {
+    return this.http.request('get', `/guilds/${id}/exists`, { headers: { 'authorization': `Bearer ${token}` } });
   }
 
   /**
@@ -73,8 +102,8 @@ class Client {
    * @param {string} token The access token our API returned
    * @param {string} id The Discord guild id
    */
-  applyPremium(token, id) {
-    return this.http.request('post', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  upgradeGuild(token, id) {
+    return this.http.request('post', `/guilds/${id}/upgrade`, { headers: { 'authorization': `Bearer ${token}` } });
   }
 
   /**
@@ -83,8 +112,8 @@ class Client {
    * @param {string} token The access token our API returned
    * @param {string} id The Discord guild id
    */
-  removePremium(token, id) {
-    return this.http.request('delete', `/guilds/${id}/premium`, { headers: { 'authorization': `Bearer ${token}` } });
+  downgradeGuild(token, id) {
+    return this.http.request('delete', `/guilds/${id}/upgrade`, { headers: { 'authorization': `Bearer ${token}` } });
   }
 
   /**
