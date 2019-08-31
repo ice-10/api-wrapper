@@ -123,8 +123,8 @@ class Client {
    * @param {string} planId The planId of our chargebee plans
    * @param {string} type The type of the requested hostedPage
    */
-  createHostedPage(token, planId, type) {
-    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: planId, type: type } });
+  createHostedPage(token, id, type, quantity) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity } });
   }
 
   /**
