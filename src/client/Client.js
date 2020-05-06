@@ -131,6 +131,27 @@ class Client {
   }
 
   /**
+   * Creates a hostedPage related to the provided planId
+   * 
+   * @param {string} token The access token our API returned 
+   * @param {string} planId The planId of our chargebee plans
+   * @param {string} type The type of the requested hostedPage
+   * @param {string} coupon The coupon code that should be applied
+   */
+  createHostedPageWithCoupon(token, id, type, quantity, coupon) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity, coupon: coupon } });
+  }
+
+  /**
+   * Creates a hostedPage related to the provided planId
+   * 
+   * @param {string} token The access token our API returned 
+   */
+  createHostedPageForReactivation(token) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { reactivate: 'true', type: 'checkoutExisting' } });
+  }
+
+  /**
    * Creates a portalSession related to the selfUser
    * 
    * @param {string} token The access token our API returned
