@@ -8,8 +8,8 @@
     "lint": "eslint --fix --ignore-path .gitignore ."
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "consola": "^2.10.1"
+    "axios": "^0.19.2",
+    "consola": "^2.11.3"
   },
   "devDependencies": {
     "eslint": "^5.16.0"

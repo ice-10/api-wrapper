@@ -1,5 +1,8 @@
 const HttpUtil = require('../utils/HttpUtil');
 
+/**
+ * @deprecated This is going to be fully reworked while https://app.clubhouse.io/groovy/epic/337/complete-webapp-rework
+ */
 class Client {
 
   /**
@@ -125,6 +128,27 @@ class Client {
    */
   createHostedPage(token, id, type, quantity) {
     return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity } });
+  }
+
+  /**
+   * Creates a hostedPage related to the provided planId
+   * 
+   * @param {string} token The access token our API returned 
+   * @param {string} planId The planId of our chargebee plans
+   * @param {string} type The type of the requested hostedPage
+   * @param {string} couponId The coupon code that should be applied
+   */
+  createHostedPageWithCoupon(token, id, type, quantity, couponId) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity, couponId: couponId } });
+  }
+
+  /**
+   * Creates a hostedPage related to the provided planId
+   * 
+   * @param {string} token The access token our API returned 
+   */
+  createHostedPageForReactivation(token) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { reactivate: 'true', type: 'checkoutExisting' } });
   }
 
   /**
