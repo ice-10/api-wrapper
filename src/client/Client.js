@@ -136,10 +136,10 @@ class Client {
    * @param {string} token The access token our API returned 
    * @param {string} planId The planId of our chargebee plans
    * @param {string} type The type of the requested hostedPage
-   * @param {string} coupon The coupon code that should be applied
+   * @param {string} couponId The coupon code that should be applied
    */
-  createHostedPageWithCoupon(token, id, type, quantity, coupon) {
-    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity, coupon: coupon } });
+  createHostedPageWithCoupon(token, id, type, quantity, couponId) {
+    return this.http.request('post', '/chargebee/hostedPages', { headers: { 'authorization': `Bearer ${token}` }, body: { planId: id, type: type, planQuantity: quantity, couponId: couponId } });
   }
 
   /**
