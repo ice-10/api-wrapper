@@ -2,6 +2,9 @@ const axios = require('axios');
 const consola = require('consola');
 const RestResponse = require('../rest/RestResponse');
 
+/**
+ * @deprecated This Http util class is no longer supported and will be removed from upcoming versions!
+ */
 class Http {
 
   /**
