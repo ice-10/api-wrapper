@@ -1,7 +1,7 @@
 const HttpUtil = require('../utils/HttpUtil');
 
 /**
- * @deprecated This is going to be fully reworked while https://app.clubhouse.io/groovy/epic/337/complete-webapp-rework
+ * @deprecated This is going to be fully reworked while https://app.clubhouse.io/groovy/epic/337/complete-webapp-rework | Version 4 will include own utils inside the web application
  */
 class Client {
 
